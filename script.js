@@ -46,20 +46,20 @@ function playGame() {
         let tempScore = playRound(playerSelection, computerSelection)
         if (tempScore === 1) {
             playerScore += 1;
-            alert(`You won round ${count}  \n you_select : ${playerSelection} \ncomputer_select : ${computerSelection}`)
+            console.log(`You won round ${count}  \nyou_select : ${playerSelection} \ncomputer_select : ${computerSelection}`)
         } else if (tempScore === -1) {
             computerScore += 1;
-            alert(`You losed round ${count} \n you_select : ${playerSelection} \ncomputer_select : ${computerSelection} `)
+            console.log(`You losed round ${count} \nyou_select : ${playerSelection} \ncomputer_select : ${computerSelection} `)
         } else {
-            alert(`the same select : ${playerSelection}`)
+            console.log(`round ${count} is equal \nthe same select : ${playerSelection}`)
         }
     }
     if (playerScore > computerScore) {
-        alert(`You're winner \nyour_score : ${playerScore}\ncomputer_score : ${computerScore}`)
+        console.log(`You're winner \nyour_score : ${playerScore}\ncomputer_score : ${computerScore}`)
     } else if (playerScore < computerScore) {
-        alert(`You're loser \nyour_score : ${playerScore}\ncomputer_score : ${computerScore}`)
+        console.log(`You're loser \nyour_score : ${playerScore}\ncomputer_score : ${computerScore}`)
     } else {
-        alert("the score is same :  ${playerScore} ")
+        console.log("the score is same :  ${playerScore} ")
     }
 }
 
