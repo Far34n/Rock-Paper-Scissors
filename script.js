@@ -62,5 +62,8 @@ function playGame() {
         console.log("the score is same :  ${playerScore} ")
     }
 }
-
-playGame()
+const playerSelectionButtons = document.querySelectorAll('button');
+playerSelectionButtons.forEach((button) =>
+    button.addEventListener("click", () => alert(button.id))
+);
+// playGame()
