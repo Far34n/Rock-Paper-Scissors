@@ -1,45 +1,60 @@
+let playerScore = 0;
+let ComputerScore = 0;
+
 function getComputerChoice(choices) {
     let index = Math.floor(Math.random() * choices.length);
     return choices[index]
 }
 
 function playRound(playerSelection, computerSelection) {
-    playerSelection = playerSelection.toLowerCase()
-    computerSelection = computerSelection.toLowerCase()
     if (computerSelection === 'rock') {
         if (playerSelection === 'rock') {
-            return 0
+            return 0;
         } else if (playerSelection === 'paper') {
-            return 1
+            return ++playerScore;
         } else if (playerSelection === 'scissors') {
-            return -1
+            return ++ComputerScore;
         }
     } else if (computerSelection == 'paper') {
         if (playerSelection === 'rock') {
-            return -1
+            return ++ComputerScore;
         } else if (playerSelection === 'paper') {
-            return 0
+            return 0;
         } else if (playerSelection === 'scissors') {
-            return 1
+            return ++playerScore;
         }
     } else if (computerSelection === 'scissors') {
         if (playerSelection === 'rock') {
-            return 1
+            return ++playerScore;
         } else if (playerSelection === 'paper') {
-            return -1
+            return ++ComputerScore;
         } else if (playerSelection === 'scissors') {
-            return 0
+            return 0;
         }
     }
 
 
 }
 
-function playGame() {
-    const playerSelectionButtons = document.querySelectorAll('button');
-    playerSelectionButtons.forEach((button) =>
-        button.addEventListener("click", () => playRound(button.id, getComputerChoice(['rock', 'paper', 'scissors']))
-        ));
-
+function playGame(button) {
+    if (playerScore >= 5 || ComputerScore >= 5) {
+        score.textContent = `You: ${playerScore}\n Computer: ${ComputerScore} Finishd!`;
+    } else {
+        playRound(button, getComputerChoice(['rock', 'paper', 'scissors']))
+        score.textContent = `You: ${playerScore}\n Computer: ${ComputerScore}`;
+    }
 }
-// playGame()
+
+const score = document.createElement("p")
+const scoreBoard = document.querySelector('#scoreBoard')
+const buttons = document.querySelectorAll('button');
+score.textContent = `You: ${playerScore}
+Computer: ${ComputerScore}`;
+scoreBoard.appendChild(score)
+
+
+buttons.forEach((button) => {
+    button.addEventListener("click", () => {
+        playGame(button.id);
+    });
+});
