@@ -9,27 +9,33 @@ function getComputerChoice(choices) {
 function playRound(playerSelection, computerSelection) {
     if (computerSelection === 'rock') {
         if (playerSelection === 'rock') {
-            return 0;
+            return 'Draw';
         } else if (playerSelection === 'paper') {
-            return ++playerScore;
+            playerScore++;
+            return 'Won';
         } else if (playerSelection === 'scissors') {
-            return ++ComputerScore;
+            ComputerScore++;
+            return 'Lose';
         }
     } else if (computerSelection == 'paper') {
         if (playerSelection === 'rock') {
-            return ++ComputerScore;
+            ComputerScore++;
+            return 'Lose';
         } else if (playerSelection === 'paper') {
-            return 0;
+            return 'Draw';
         } else if (playerSelection === 'scissors') {
-            return ++playerScore;
+            playerScore++;
+            return 'Won';
         }
     } else if (computerSelection === 'scissors') {
         if (playerSelection === 'rock') {
-            return ++playerScore;
+            playerScore++;
+            return 'Won';
         } else if (playerSelection === 'paper') {
-            return ++ComputerScore;
+            ComputerScore++;
+            return 'Lose';
         } else if (playerSelection === 'scissors') {
-            return 0;
+            return 'Draw';
         }
     }
 
@@ -38,18 +44,17 @@ function playRound(playerSelection, computerSelection) {
 
 function playGame(button) {
     if (playerScore >= 5 || ComputerScore >= 5) {
-        score.textContent = `You: ${playerScore}\n Computer: ${ComputerScore} Finishd!`;
+        score.textContent = `You : ${playerScore} Comp: ${ComputerScore} (Finished!) `;
     } else {
-        playRound(button, getComputerChoice(['rock', 'paper', 'scissors']))
-        score.textContent = `You: ${playerScore}\n Computer: ${ComputerScore}`;
+        let res = playRound(button, getComputerChoice(['rock', 'paper', 'scissors']))
+        score.textContent = `You : ${playerScore} Comp: ${ComputerScore} (${res})`;
     }
 }
 
 const score = document.createElement("p")
 const scoreBoard = document.querySelector('#scoreBoard')
-const buttons = document.querySelectorAll('button');
-score.textContent = `You: ${playerScore}
-Computer: ${ComputerScore}`;
+const buttons = document.querySelectorAll('img');
+score.textContent = `You : ${playerScore} Comp: ${ComputerScore}`;
 scoreBoard.appendChild(score)
 
 

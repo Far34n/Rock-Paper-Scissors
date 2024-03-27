@@ -1,0 +1,31 @@
+#scoreBoard {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    align-content: center;
+}
+
+#scoreBoard p {
+    font-family: Arial, Helvetica, sans-serif;
+    font-size: 30px;
+}
+
+.selection {
+    height: 400px;
+    display: flex;
+    justify-content: space-around;
+    align-items: center;
+    align-content: center;
+    margin: 5px;
+}
+
+img:hover {
+
+    transform: scale(1.5);
+}
+
+@media screen and (max-width : 900px) {
+    img {
+        width: 100px;
+    }
+}
