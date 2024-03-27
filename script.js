@@ -34,36 +34,9 @@ function playRound(playerSelection, computerSelection) {
 
 
 }
-function playGame() {
-    let computerScore = 0;
-    let playerScore = 0;
-    let playerSelection = ''
-    let computerSelection = ''
 
-    for (let count = 1; count <= 5; count++) {
-        playerSelection = prompt(`select rock,paper or scissors \nRound : ${count} of 5 \n your_score : ${playerScore} \ncomputer_score : ${computerScore}`)
-        computerSelection = getComputerChoice(['rock', 'paper', 'scissors']);
-        let tempScore = playRound(playerSelection, computerSelection)
-        if (tempScore === 1) {
-            playerScore += 1;
-            console.log(`You won round ${count}  \nyou_select : ${playerSelection} \ncomputer_select : ${computerSelection}`)
-        } else if (tempScore === -1) {
-            computerScore += 1;
-            console.log(`You losed round ${count} \nyou_select : ${playerSelection} \ncomputer_select : ${computerSelection} `)
-        } else {
-            console.log(`round ${count} is equal \nthe same select : ${playerSelection}`)
-        }
-    }
-    if (playerScore > computerScore) {
-        console.log(`You're winner \nyour_score : ${playerScore}\ncomputer_score : ${computerScore}`)
-    } else if (playerScore < computerScore) {
-        console.log(`You're loser \nyour_score : ${playerScore}\ncomputer_score : ${computerScore}`)
-    } else {
-        console.log("the score is same :  ${playerScore} ")
-    }
-}
 const playerSelectionButtons = document.querySelectorAll('button');
 playerSelectionButtons.forEach((button) =>
-    button.addEventListener("click", () => alert(button.id))
+    button.addEventListener("click", () => playRound(button.id,))
 );
 // playGame()
