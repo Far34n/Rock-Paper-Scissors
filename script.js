@@ -35,8 +35,11 @@ function playRound(playerSelection, computerSelection) {
 
 }
 
-const playerSelectionButtons = document.querySelectorAll('button');
-playerSelectionButtons.forEach((button) =>
-    button.addEventListener("click", () => playRound(button.id,))
-);
+function playGame() {
+    const playerSelectionButtons = document.querySelectorAll('button');
+    playerSelectionButtons.forEach((button) =>
+        button.addEventListener("click", () => playRound(button.id, getComputerChoice(['rock', 'paper', 'scissors']))
+        ));
+
+}
 // playGame()
